@@ -10,40 +10,38 @@ class RecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 1.0, //그림자
-        actions: [
-          Icon(
-            CupertinoIcons.search,
-            color: Colors.black,
-          ),
-          SizedBox(width: 15),
-          Icon(
-            CupertinoIcons.heart,
-            color: Colors.redAccent,
-          ),
-          SizedBox(width: 15),
-        ],
+      appBar: _buildRecipeAppBar(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ListView(
+          children: [
+            RecipeTitle(),
+            RecipeMenu(),
+            RecipeListItem(imageName: "coffee", title: "Made Coffee"),
+            RecipeListItem(imageName: "burger", title: "Made Burger"),
+            RecipeListItem(imageName: "pizza", title: "Made Pizza"),
+          ],
+        ),
       ),
-      body: ListView(
-        children: [
-          RecipeTitle(),
-          RecipeMenu(),
-          RecipeListItem(),
-          SizedBox(
-            height: 10,
-          ),
-          RecipeListItem(),
-          SizedBox(
-            height: 10,
-          ),
-          RecipeListItem(),
-          SizedBox(
-            height: 10,
-          ),
-        ],
-      ),
+    );
+  }
+
+  AppBar _buildRecipeAppBar() {
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 1.0, //그림자
+      actions: [
+        Icon(
+          CupertinoIcons.search,
+          color: Colors.black,
+        ),
+        SizedBox(width: 15),
+        Icon(
+          CupertinoIcons.heart,
+          color: Colors.redAccent,
+        ),
+        SizedBox(width: 15),
+      ],
     );
   }
 }
